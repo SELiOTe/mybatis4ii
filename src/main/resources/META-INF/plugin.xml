@@ -1,0 +1,28 @@
+<idea-plugin>
+    <id>com.seliote.mybatis4ii</id>
+    <name>MyBatis4II</name>
+    <vendor email="seliote@hotmail.com" url="https://www.seliote.com">seliote</vendor>
+
+    <description><![CDATA[
+    1. Mapper XML create template
+    2. Inject Mapper Interface as a Spring Bean
+    ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.lang</depends>
+    <depends>com.intellij.modules.java</depends>
+    <depends>com.intellij.spring</depends>
+
+    <extensions defaultExtensionNs="com.intellij.spring">
+        <customLocalComponentsDiscoverer implementation="com.seliote.mybatis4ii.MapperBeanProvider"/>
+    </extensions>
+
+    <actions>
+        <action id="mybatis4ii_mapper_create_action"
+                class="com.seliote.mybatis4ii.MapperCreateAction"
+                text="MyBatis Mapper XML"
+                icon="/svg/mapper_xml_icon.svg">
+            <add-to-group group-id="NewXml" anchor="after" relative-to-action="NewHtmlFile"/>
+        </action>
+    </actions>
+</idea-plugin>
