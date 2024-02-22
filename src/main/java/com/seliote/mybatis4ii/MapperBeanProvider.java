@@ -14,7 +14,6 @@ import com.intellij.spring.model.utils.SpringCommonUtils;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * Inject MyBatis Bean to Spring Container
@@ -93,7 +92,7 @@ public class MapperBeanProvider extends SpringMyBatisBeansProvider {
         var psiNameValuePairs =
                 Arrays.stream(mapperScanAnnotation.getParameterList().getAttributes())
                         .filter(psiNameValuePair -> psiNameValuePair.getAttributeValue() != null)
-                        .collect(Collectors.toList());
+                        .toList();
         for (var psiNameValuePair : psiNameValuePairs) {
             var attrName = psiNameValuePair.getAttributeName();
             var psiAnnotationMemberValue = psiNameValuePair.getValue();
@@ -193,7 +192,6 @@ public class MapperBeanProvider extends SpringMyBatisBeansProvider {
             var psiPackage =
                     getPackageByName(
                             JavaPsiFacade.getInstance(context.getProject()),
-                            // Value is a String but with quotation mark at begin and end
                             value.getText().replaceAll("\"", ""));
             psiPackage.ifPresent(psiPackages::add);
         }
@@ -212,7 +210,6 @@ public class MapperBeanProvider extends SpringMyBatisBeansProvider {
             PsiArrayInitializerMemberValue psiArrayInitializerMemberValue) {
         Collection<PsiPackage> psiPackages = new ArrayList<>();
         for (var value : psiArrayInitializerMemberValue.getInitializers()) {
-            // 通过属性值中的类来获取所在包的 PsiPackage 对象
             if (value instanceof PsiClassObjectAccessExpression) {
                 var psiTypeElement
                         = ((PsiClassObjectAccessExpression) value).getOperand();
@@ -258,7 +255,7 @@ public class MapperBeanProvider extends SpringMyBatisBeansProvider {
             mappers.addAll(
                     Arrays.stream(psiPackage.getClasses(scope))
                             .filter(PsiClass::isInterface)
-                            .collect(Collectors.toList())
+                            .toList()
             );
         }
         return mappers;
