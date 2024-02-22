@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.seliote.MyBatis4II</id>
     <name>MyBatis4II</name>
-    <vendor email="seliote@hotmail.com" url="https://www.seliote.com">seliote</vendor>
+    <vendor email="seliote@hotmail.com" url="https://www.seliote.fun">seliote</vendor>
 
     <description><![CDATA[
     1. Mapper XML create template
