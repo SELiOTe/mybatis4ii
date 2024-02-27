@@ -30,7 +30,7 @@ import java.util.Optional;
 public class MapperCreateAction extends AnAction {
 
     // Mapper XML file template
-    private static final String MAPPER_TEMPLATE_PATH = "/template/mapper_template.xml";
+    private static final String TEMPLATE_MAPPER_PATH = "/template/mapper_template.xml";
 
     // Item is visible if this class in class path
     private static final String FLAG_ITEM_VISIBLE_CLASS = "org.apache.ibatis.session.Configuration";
@@ -104,7 +104,7 @@ public class MapperCreateAction extends AnAction {
                 return;
             }
             String content;
-            var resource = MapperCreateAction.class.getResourceAsStream(MAPPER_TEMPLATE_PATH);
+            var resource = MapperCreateAction.class.getResourceAsStream(TEMPLATE_MAPPER_PATH);
             if (resource == null) {
                 Messages.showInfoMessage(
                         "Can not read template file", "Mapper XML");
