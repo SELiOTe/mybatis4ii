@@ -1,6 +1,7 @@
 package com.seliote.mybatis4ii;
 
 import com.intellij.lang.xml.XMLLanguage;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
@@ -33,6 +34,12 @@ public class MapperCreateAction extends AnAction {
 
     // Item is visible if this class in class path
     private static final String FLAG_ITEM_VISIBLE_CLASS = "org.apache.ibatis.session.Configuration";
+
+    @Override
+    @NotNull
+    public ActionUpdateThread getActionUpdateThread() {
+        return super.getActionUpdateThread();
+    }
 
     @Override
     public void actionPerformed(@NotNull AnActionEvent e) {
